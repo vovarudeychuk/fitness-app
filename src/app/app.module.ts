@@ -38,7 +38,8 @@ import { AuthGuard } from './auth/auth.guard';
 import { LoginGuard } from "./auth/login.guard";
 import { NoProfileGuard } from './auth/no-profile.guard';
 import { ExistProfileGuard } from './auth/exist-profile.guard';
-import { ProfileComponent } from './dashboard/profile/profile.component';
+import { ProfileComponent } from './pages/dashboard/profile/profile.component';
+// import { ProfileComponent } from './dashboard/profile/profile.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { ProfileComponent } from './dashboard/profile/profile.component';
     HeaderComponent,
     ProfileDataSteperComponent,
     ProfileComponent,
+    // ProfileComponent,
 
     
   ],
