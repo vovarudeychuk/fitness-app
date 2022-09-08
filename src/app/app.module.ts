@@ -1,64 +1,72 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';  
+
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
-import { ReactiveFormsModule, FormControl } from '@angular/forms';
-import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 
+import { AppRoutingModule } from './app-routing.module';
+import { ReactiveFormsModule, FormControl, FormsModule } from '@angular/forms';
+
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
 import { environment } from 'src/environments/environment';
 
-import {  NbAuthModule, NbAuthJWTToken } from '@nebular/auth';
+import { NbAuthModule, NbAuthJWTToken } from '@nebular/auth';
 
 import { NbFirebaseAuthModule, NbFirebasePasswordStrategy, NbFirebaseGoogleStrategy } from '@nebular/firebase-auth';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
-import { NbThemeModule, 
-         NbLayoutModule,
-         NbUserModule,
-         NbSidebarModule,
-         NbActionsModule,
-         NbFormFieldModule,
-         NbButtonModule,
-         NbStepperModule,
-         NbCardModule,
-         NbInputModule,
-         NbDatepickerModule,
-        } from '@nebular/theme';
+import {
+  NbThemeModule,
+  NbLayoutModule,
+  NbUserModule,
+  NbSidebarModule,
+  NbActionsModule,
+  NbFormFieldModule,
+  NbButtonModule,
+  NbStepperModule,
+  NbCardModule,
+  NbInputModule,
+  NbDatepickerModule,
+} from '@nebular/theme';
 
-
+// components
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { HeaderComponent } from './pages/dashboard/header/header.component';
 import { ProfileDataSteperComponent } from './pages/profile-data-steper/profile-data-steper.component';
+import { ProfileComponent } from './pages/dashboard/profile/profile.component';
 
+// guards
 import { AuthGuard } from './auth/auth.guard';
 import { LoginGuard } from "./auth/login.guard";
 import { NoProfileGuard } from './auth/no-profile.guard';
 import { ExistProfileGuard } from './auth/exist-profile.guard';
-import { ProfileComponent } from './pages/dashboard/profile/profile.component';
-// import { ProfileComponent } from './dashboard/profile/profile.component';
+
+//directives
+import { IfChangedToDirective } from './directive/if-changed-to.directive';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    IfChangedToDirective,
     DashboardComponent,
     HeaderComponent,
     ProfileDataSteperComponent,
     ProfileComponent,
-    // ProfileComponent,
-
-    
   ],
   imports: [
-    BrowserModule, 
+    BrowserModule,
+    CommonModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ReactiveFormsModule, 
+    FormsModule,
+    ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideFirestore(() => getFirestore()),
     NbThemeModule.forRoot({ name: 'dark' }),
@@ -109,9 +117,9 @@ import { ProfileComponent } from './pages/dashboard/profile/profile.component';
           login: {
             redirect: {
               success: 'pages/dashboard',
-              failure: null, // stay on the same page
+              failure: null,
             },
-            defaultErrors: ['Login/Email combination is not correct, please try again.'],
+            defaultErrors: ['Login/Password combination is not correct, please try again.'],
           },
           register: {
             redirect: {
@@ -136,7 +144,7 @@ import { ProfileComponent } from './pages/dashboard/profile/profile.component';
           token: {
             class: NbAuthJWTToken,
             token: 'token'
-            }
+          }
         }),
         NbFirebaseGoogleStrategy.setup({
           name: 'google',
@@ -153,7 +161,7 @@ import { ProfileComponent } from './pages/dashboard/profile/profile.component';
     NbSidebarModule.forRoot(),
     NbStepperModule,
     NbCardModule,
-    
+
   ],
   providers: [AuthGuard, LoginGuard, { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig }, ExistProfileGuard, NoProfileGuard],
   bootstrap: [AppComponent]

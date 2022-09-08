@@ -15,13 +15,13 @@ export class NoProfileGuard implements CanActivate {
   }
   canActivate() {
     return this.userService.getExist().pipe(
-        tap(exist => {
-          if(!exist) {
-            this.router.navigate(['profile-creator']);
-          } 
-        })
-      )
-      
+      tap(exist => {
+        if (!exist) {
+          this.router.navigate(['profile-creator']);
+        }
+      })
+    )
+
   }
-  
+
 }

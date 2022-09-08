@@ -26,15 +26,14 @@ const routes: Routes = [
     component: NbAuthComponent,
     canActivateChild: [LoginGuard],
     children: [
-      {
-        path: '**',
-        pathMatch: 'full',
-        redirectTo: 'login',
-      },
+      // {
+      //   path: '**',
+      //   pathMatch: 'full',
+      //   redirectTo: 'login',
+      // },
       {
         path: 'login',
         component: NbLoginComponent,
-
       },
       {
         path: 'register',

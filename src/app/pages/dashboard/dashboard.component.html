@@ -2,10 +2,8 @@
   <nb-layout-header>
     <app-header></app-header>
 
-    <nb-actions style="right: 5px; position: fixed;" size="small">
-      <nb-action 
-        icon="search-outline">
-      </nb-action>
+    <nb-actions *appIfChangedTo="'large'" style="right: 5px; position: fixed" size="small">
+      <nb-action icon="search-outline"> </nb-action>
       <nb-action
         icon="bell-outline"
         badgeDot
@@ -15,9 +13,7 @@
       </nb-action>
       <nb-action
         icon="person-outline"
-        badgeDot
         badgePosition="top start"
-        badgeStatus="warning"
       >
       </nb-action>
       <nb-action
@@ -42,12 +38,15 @@
       >
       </nb-action>
     </nb-actions>
-    
   </nb-layout-header>
 
-  <nb-layout-footer>Footer</nb-layout-footer>
-  <nb-layout-column>Dashboard
+  <!-- <nb-layout-footer>
+    
+  </nb-layout-footer> -->
 
+  <nb-layout-column>
+    <app-profile></app-profile>
   </nb-layout-column>
+
   <nb-sidebar state="compacted"> </nb-sidebar>
 </nb-layout>

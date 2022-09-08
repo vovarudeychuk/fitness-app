@@ -12,6 +12,7 @@ export class ExistProfileGuard implements CanActivate {
   constructor(private authService: NbAuthService, private router: Router, private userService: UserService) {
 
   }
+
   canActivate() {
     return this.userService.getExist().pipe(
       map(isExist => {
@@ -22,9 +23,8 @@ export class ExistProfileGuard implements CanActivate {
           this.router.navigate(['pages/dashboard']);
         }
       })
-    )
-      
-      
+    );
+
   }
-  
+
 }

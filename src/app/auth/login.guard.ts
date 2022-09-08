@@ -6,7 +6,7 @@ import { map, tap } from 'rxjs/operators';
 
 
 @Injectable()
-export class LoginGuard implements CanActivate, CanActivateChild{
+export class LoginGuard implements CanActivate, CanActivateChild {
 
   constructor(private authService: NbAuthService, private router: Router) {
 
@@ -22,12 +22,12 @@ export class LoginGuard implements CanActivate, CanActivateChild{
           this.router.navigate(['pages/dashboard']);
         }
       })
-      
-    );   
+
+    );
   }
 
   canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-      return this.canActivate()
+    return this.canActivate()
   }
 
 
