@@ -1,0 +1,52 @@
+<nb-layout fixed>
+  <nb-layout-header>
+    <app-header></app-header>
+
+    <nb-actions style="right: 5px; position: fixed;" size="small">
+      <nb-action 
+        icon="search-outline">
+      </nb-action>
+      <nb-action
+        icon="bell-outline"
+        badgeDot
+        badgePosition="top right"
+        badgeStatus="danger"
+      >
+      </nb-action>
+      <nb-action
+        icon="person-outline"
+        badgeDot
+        badgePosition="top start"
+        badgeStatus="warning"
+      >
+      </nb-action>
+      <nb-action
+        icon="email-outline"
+        badgeDot
+        badgePosition="top left"
+        badgeStatus="danger"
+      >
+      </nb-action>
+      <nb-action
+        icon="calendar-outline"
+        badgeDot
+        badgePosition="top right"
+        badgeStatus="info"
+      >
+      </nb-action>
+      <nb-action
+        icon="power-outline"
+        badgePosition="bottom right"
+        badgeStatus="warning"
+        [routerLink]="['/logout/']"
+      >
+      </nb-action>
+    </nb-actions>
+  </nb-layout-header>
+
+  <nb-layout-footer>Footer</nb-layout-footer>
+  <nb-layout-column>Dashboard
+
+  </nb-layout-column>
+  <nb-sidebar state="compacted"> </nb-sidebar>
+</nb-layout>

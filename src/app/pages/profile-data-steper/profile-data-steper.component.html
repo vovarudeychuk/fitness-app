@@ -1,0 +1,112 @@
+<!-- <nb-layout fixed> -->
+
+<nb-layout center>
+  <nb-layout-column>
+    <nb-card>
+      <nb-card-body>
+        <nb-stepper #stepper>
+          <nb-step [stepControl]="nameForm" label="First step">
+            <form
+              [formGroup]="nameForm"
+              (ngSubmit)="onFirstSubmit()"
+              class="step-container"
+            >
+              <h3>Enter you name!</h3>
+              <div class="input-group">
+                <input
+                  nbInput
+                  fullWidth
+                  type="text"
+                  placeholder="Enter your name"
+                  class="form-control"
+                  formControlName="nameCtrl"
+                  [ngClass]="{
+                    'form-control-danger':
+                    nameForm.invalid &&
+                      (nameForm.dirty || nameForm.touched)
+                  }"
+                />
+              </div>
+              <button nbButton nbStepperNext>next</button>
+            </form>
+          </nb-step>
+          <nb-step [stepControl]="ageForm" label="Second step">
+            <form
+              [formGroup]="ageForm"
+              (ngSubmit)="onSecondSubmit()"
+              class="step-container"
+            >
+              <h3>How old are you?</h3>
+              <div class="input-group">
+                <input
+                  nbInput
+                  class="form-control"
+                  formControlName="ageCtrl"
+                  type="datetime"
+                  placeholder="Pick Date"
+                  [nbDatepicker]="dateTimePicker"
+                  [ngClass]="{
+                    'form-control-danger':
+                    ageForm.invalid &&
+                      (ageForm.dirty || ageForm.touched)
+                  }"
+                />
+                <nb-datepicker #dateTimePicker></nb-datepicker>
+              </div>
+              <button nbButton nbStepperPrevious>prev</button>
+              <button nbButton nbStepperNext>next</button>
+            </form>
+          </nb-step>
+          <nb-step [stepControl]="tallWeightForm" label="Third step">
+            <form
+              [formGroup]="tallWeightForm"
+              (ngSubmit)="onThirdSubmit()"
+              class="step-container"
+            >
+              <h3>Enter you tall and weight!</h3>
+              <div class="input-group">
+                <h6>Yout tall?</h6>
+                <input
+                  nbInput
+                  type="number"
+                  placeholder="Enter something"
+                  class="form-control"
+                  formControlName="sizeCtrl"
+                  [ngClass]="{
+                    'form-control-danger':
+                    tallWeightForm.invalid &&
+                      (tallWeightForm.dirty || tallWeightForm.touched)
+                  }"
+                />
+              </div>
+
+              <div class="input-group">
+                <h6>You weight?</h6>
+                <input
+                nbInput
+                type="number"
+                placeholder="Enter something"
+                class="form-control"
+                formControlName="weightCtrl"
+                [ngClass]="{
+                  'form-control-danger':
+                  tallWeightForm.invalid &&
+                    (tallWeightForm.dirty || tallWeightForm.touched)
+                }"
+              />
+              </div>
+              <button nbButton nbStepperPrevious type="button">prev</button>
+              <button nbButton nbStepperNext type="button" (click)="onConfirm()">Confirm</button>
+            </form>
+          </nb-step>
+          <nb-step [stepControl]="tallWeightForm" [hidden]="true" label="Third step">
+            <div class="step-container">
+              <h3>You profile has been created!</h3>
+              <!-- <button nbButton (click)="stepper.reset()">Try again</button> -->
+            </div>
+          </nb-step>
+        </nb-stepper>
+      </nb-card-body>
+    </nb-card>
+  </nb-layout-column>
+</nb-layout>
