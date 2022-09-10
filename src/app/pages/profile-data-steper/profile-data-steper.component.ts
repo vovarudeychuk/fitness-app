@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Data, Router } from '@angular/router';
 import { NbDatepickerDirective } from '@nebular/theme';
 import { User } from 'src/app/interfaces/user';
+import { UserDetailsService } from 'src/app/services/user-details.service';
 import { UserService } from 'src/app/services/user.service';
 
 
@@ -23,7 +24,7 @@ export class ProfileDataSteperComponent implements OnInit, AfterContentInit {
   weightDefault: Number = 80;
   
 
-  constructor(private fb: FormBuilder, private router: Router, private userService: UserService) {
+  constructor(private fb: FormBuilder, private router: Router, private userService: UserService, private UserDetailService: UserDetailsService) {
     this.nameForm = this.fb.group({
       nameCtrl: ['', Validators.required],
     });
@@ -66,12 +67,23 @@ export class ProfileDataSteperComponent implements OnInit, AfterContentInit {
       name: this.nameForm.value.nameCtrl,
       birthDay: this.ageForm.value.ageCtrl,
       tall: this.tallWeightForm.value.sizeCtrl,
-      weight: this.tallWeightForm.value.weightCtrl
+      weight: this.tallWeightForm.value.weightCtrl,
+      userDetails: {
+        bmi: Number(this.UserDetailService.calculateBMI(
+          this.tallWeightForm.value.sizeCtrl, 
+          this.tallWeightForm.value.weightCtrl
+          )),
+        bmr: this.UserDetailService.calculateBmr(
+          this.tallWeightForm.value.sizeCtrl,
+          this.tallWeightForm.value.weightCtrl,
+          Math.floor(this.UserDetailService.getAge(this.ageForm.value.ageCtrl))
+          )
+      }
     }
+
 
     this.userService.addUser(userData)
     this.router.navigate(['pages/dashboard'])
-    
   
   }
 

@@ -31,6 +31,8 @@ import {
   NbCardModule,
   NbInputModule,
   NbDatepickerModule,
+  NbSearchModule,
+  NbProgressBarModule,
 } from '@nebular/theme';
 
 // components
@@ -48,6 +50,7 @@ import { ExistProfileGuard } from './auth/exist-profile.guard';
 
 //directives
 import { IfChangedToDirective } from './directive/if-changed-to.directive';
+import { ActionsComponent } from './pages/dashboard/header/actions/actions.component';
 
 
 @NgModule({
@@ -58,6 +61,7 @@ import { IfChangedToDirective } from './directive/if-changed-to.directive';
     HeaderComponent,
     ProfileDataSteperComponent,
     ProfileComponent,
+    ActionsComponent,
   ],
   imports: [
     BrowserModule,
@@ -161,7 +165,8 @@ import { IfChangedToDirective } from './directive/if-changed-to.directive';
     NbSidebarModule.forRoot(),
     NbStepperModule,
     NbCardModule,
-
+    NbSearchModule,
+    NbProgressBarModule,
   ],
   providers: [AuthGuard, LoginGuard, { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig }, ExistProfileGuard, NoProfileGuard],
   bootstrap: [AppComponent]

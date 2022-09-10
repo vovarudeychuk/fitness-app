@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NbAuthService } from '@nebular/auth';
+import { NbSearchService } from '@nebular/theme';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,9 +8,13 @@ import { NbAuthService } from '@nebular/auth';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private searchService: NbSearchService) { }
 
   ngOnInit(): void {
+  }
+
+  onSearch() {
+    this.searchService.activateSearch('rotate-layout')
   }
 
 }
