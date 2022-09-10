@@ -51,7 +51,8 @@ import { ExistProfileGuard } from './auth/exist-profile.guard';
 //directives
 import { IfChangedToDirective } from './directive/if-changed-to.directive';
 import { ActionsComponent } from './pages/dashboard/header/actions/actions.component';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+// import {  } from '@types/d3-selection'
+// import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 @NgModule({
@@ -168,7 +169,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     NbCardModule,
     NbSearchModule,
     NbProgressBarModule,
-    NgxChartsModule
+    NgxChartsModule,
   ],
   providers: [AuthGuard, LoginGuard, { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig }, ExistProfileGuard, NoProfileGuard],
   bootstrap: [AppComponent]
