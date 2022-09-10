@@ -168,8 +168,7 @@ import { ActionsComponent } from './pages/dashboard/header/actions/actions.compo
     NbStepperModule,
     NbCardModule,
     NbSearchModule,
-    NbProgressBarModule,
-    NgxChartsModule,
+    NbProgressBarModule
   ],
   providers: [AuthGuard, LoginGuard, { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig }, ExistProfileGuard, NoProfileGuard],
   bootstrap: [AppComponent]
