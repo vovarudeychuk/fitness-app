@@ -1,5 +1,5 @@
 <div class="date-selction">
-  <button (click)="getPrevious()" nbButton ghost status="warning">
+  <button (click)="getPrevious(date)" nbButton ghost status="warning">
     <nb-icon
       class="date-arrow"
       status="primary"
@@ -32,9 +32,8 @@
     ></nb-datepicker>
   </div>
 
-  <button (click)="getNext()" nbButton ghost status="warning">
+  <button (click)="getNext(date)" nbButton ghost status="warning">
     <nb-icon
-      (click)="getNext()"
       class="date-arrow"
       status="primary"
       icon="arrow-ios-forward-outline"

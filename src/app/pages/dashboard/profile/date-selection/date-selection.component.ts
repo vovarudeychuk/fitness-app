@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } fro
 import { BehaviorSubject } from 'rxjs';
 import { NbDatepickerComponent, NbDatepicker } from '@nebular/theme'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DateTimeService } from 'src/app/services/date-time.service';
 
 @Component({
   selector: 'app-date-selection',
@@ -11,43 +12,37 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class DateSelectionComponent implements OnInit {
   date: Date = new Date()
-  private displayDate: BehaviorSubject<any> = new BehaviorSubject(this.date)
-  @ViewChild('dateInput') dateInput: any;
 
-  constructor() {
+  constructor(private dateService: DateTimeService) {
   }
 
   ngOnInit(): void {
+
   }
+
 
   getToday() {
-    return this.displayDate
+    return this.dateService.getToday()
   }
 
-  getNext() {
-    this.displayDate.next(this.date.setDate(this.date.getDate() + 1))
+  getNext(d: Date) {
+    this.dateService.getNext(d)
   }
 
-  getPrevious() {
-    this.displayDate.next(this.date.setDate(this.date.getDate() - 1))
+  getPrevious(d: Date) {
+    this.dateService.getPrevious(d)
   }
 
   goToNow() {
-    this.displayDate.next(Date.now())
+    this.date = new Date()
+    this.dateService.goToNow()
   }
 
   emmitChange(event: any) {
-    this.displayDate.next(event)
+    this.dateService.emmitChange(event)
   }
 
   ifNotToday(): Boolean {
-    let result: Boolean = false;
-    let now: Date = new Date()
-
-    this.displayDate.subscribe((day: any) => {
-      result = new Date(day).setHours(0, 0, 0, 0) != now.setHours(0, 0, 0, 0);
-    })
-
-    return result
+    return this.dateService.ifNotToday()
   }
 }
