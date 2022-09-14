@@ -1,18 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { User } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProfileComponent implements OnInit {
+  
   public user: any;
   value = 70;
 
   constructor(private userService: UserService) { 
-    
+
+  }
+
+  getPieData() {
+    let pData = [
+      {
+        "name": "Protein",
+        "value": 800
+      },
+      {
+        "name": "Fat",
+        "value": 400
+      },
+      {
+        "name": "Carb",
+        "value": 800
+      },
+    ];
+    return pData
   }
 
   ngOnInit(): void {
@@ -40,5 +60,7 @@ export class ProfileComponent implements OnInit {
       return 'success';
     }
   }
+
+
 
 }

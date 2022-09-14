@@ -1,0 +1,31 @@
+.date-selction {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1em;
+
+  .date-arrow {
+    min-height: 2em;
+  }
+
+  span {
+    font-size: 1.5em;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .date {
+    visibility: hidden;
+    width: 0px;
+    padding: 0 !important;
+  }
+
+  .refresh-day {
+    margin-right: 0.3em;
+    cursor: pointer;
+    :hover {
+        font-size: large;
+    }
+  }
+}

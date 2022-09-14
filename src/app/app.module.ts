@@ -33,6 +33,7 @@ import {
   NbDatepickerModule,
   NbSearchModule,
   NbProgressBarModule,
+  NbIconModule
 } from '@nebular/theme';
 
 // components
@@ -52,7 +53,9 @@ import { ExistProfileGuard } from './auth/exist-profile.guard';
 import { IfChangedToDirective } from './directive/if-changed-to.directive';
 import { ActionsComponent } from './pages/dashboard/header/actions/actions.component';
 // import {  } from '@types/d3-selection'
-// import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { PieChartComponent } from './pages/dashboard/profile/pie-chart/pie-chart.component';
+import { DateSelectionComponent } from './pages/dashboard/profile/date-selection/date-selection.component';
 
 
 @NgModule({
@@ -64,6 +67,8 @@ import { ActionsComponent } from './pages/dashboard/header/actions/actions.compo
     ProfileDataSteperComponent,
     ProfileComponent,
     ActionsComponent,
+    PieChartComponent,
+    DateSelectionComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,6 +82,7 @@ import { ActionsComponent } from './pages/dashboard/header/actions/actions.compo
     provideFirestore(() => getFirestore()),
     NbThemeModule.forRoot({ name: 'dark' }),
     NbEvaIconsModule,
+    NbIconModule,
     NbFirebaseAuthModule,
     NbAuthModule.forRoot({
       forms: {
@@ -168,7 +174,8 @@ import { ActionsComponent } from './pages/dashboard/header/actions/actions.compo
     NbStepperModule,
     NbCardModule,
     NbSearchModule,
-    NbProgressBarModule
+    NbProgressBarModule,
+    NgxChartsModule,
   ],
   providers: [AuthGuard, LoginGuard, { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig }, ExistProfileGuard, NoProfileGuard],
   bootstrap: [AppComponent]

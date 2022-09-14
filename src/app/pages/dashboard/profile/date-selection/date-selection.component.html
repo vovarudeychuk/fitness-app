@@ -1,0 +1,43 @@
+<div class="date-selction">
+  <button (click)="getPrevious()" nbButton ghost status="warning">
+    <nb-icon
+      class="date-arrow"
+      status="primary"
+      icon="arrow-ios-back-outline"
+    ></nb-icon>
+  </button>
+
+  <div class="date-picker">
+      <nb-icon *ngIf="ifNotToday()" (click)="goToNow()"
+        class="refresh-day"
+        status="warning"
+        icon="refresh-outline"
+      ></nb-icon>
+
+    <span (click)="dateInput.click()">{{ getToday() | async | date }}</span>
+
+    <input
+      #dateInput
+      id="date"
+      class="date"
+      nbInput
+      placeholder="select a date"
+      [nbDatepicker]="datePicker"
+    />
+
+    <nb-datepicker
+      #datePicker
+      [(date)]="date"
+      (dateChange)="emmitChange($event)"
+    ></nb-datepicker>
+  </div>
+
+  <button (click)="getNext()" nbButton ghost status="warning">
+    <nb-icon
+      (click)="getNext()"
+      class="date-arrow"
+      status="primary"
+      icon="arrow-ios-forward-outline"
+    ></nb-icon>
+  </button>
+</div>

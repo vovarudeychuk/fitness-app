@@ -1,10 +1,24 @@
+<app-date-selection></app-date-selection>
+
 <nb-card>
-  <nb-card-header> 
+  <nb-card-header>
     <h3>Dally nut</h3>
   </nb-card-header>
-  <nb-card-body>    
-    <span>Ccal per day: {{ normalizeNumber(user.userDetails.bmr)}} and {{ normalizeNumber(user.userDetails.bmr) - getPercentProm(user.userDetails.bmr, value)}} left</span>
-
-    <nb-progress-bar [value]="value" [status]="status" status="primary">{{getPercentProm(user.userDetails.bmr, value) + ' ccal'}}</nb-progress-bar>
+  <nb-card-body>
+    <span
+      >Ccal per day: {{ normalizeNumber(user.userDetails.bmr) }} and
+      {{
+        normalizeNumber(user.userDetails.bmr) -
+          getPercentProm(user.userDetails.bmr, value)
+      }}
+      left</span
+    >
+    <nb-progress-bar [value]="value" [status]="status" status="primary">{{
+      getPercentProm(user.userDetails.bmr, value) + " ccal"
+    }}</nb-progress-bar>
   </nb-card-body>
+
+  <!-- <nb-card-footer>
+    <app-pie-chart [data]="getPieData()"></app-pie-chart>
+  </nb-card-footer> -->
 </nb-card>
